@@ -5,24 +5,38 @@
 
 Prerequisites
 Node.js and npm (Node Package Manager) installed
+
 MongoDB Atlas account for the database
+
 Cloudinary account for image storage
+
 Step 1: Clone the Repository
+
 Clone the source code for the front-end and back-end components from your version control system (e.g., GitHub).
 
 bash
-Copy code
+
+
 git clone <repository-url>
+
 cd <repository-directory>
+
 Step 2: Set Up the Back-End
+
 Navigate to the back-end directory:
+
 bash
-Copy code
+
+
 cd backend
+
 Install the dependencies:
+
 bash
-Copy code
+
+
 npm install
+
 Create a .env file in the backend directory with the following environment variables:
 bash
 Copy code
