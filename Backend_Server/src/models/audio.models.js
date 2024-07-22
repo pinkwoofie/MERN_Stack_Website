@@ -1,5 +1,25 @@
 import mongoose, {Schema} from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
+
+
+const reviewSchema = new Schema({
+    user: 
+    {   type: Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true 
+    },
+    rating: 
+    {   type: Number,
+        min: 1,
+        max: 5
+    },
+    comment: 
+    {   type: String, 
+        required: true 
+    },
+}, { timestamps: true });
+
+
 const audideoSchema = new Schema(
 {
     audiofile: {
@@ -29,13 +49,20 @@ const audideoSchema = new Schema(
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User",
-    }
+    },
+    category: {
+            type: Schema.Types.ObjectId,
+            ref: "Category",
+            required: true
+    },
+    reviews: [reviewSchema],
+
 
 
 
 
 }, {timestamps: true})
 
-videoSchema.plugin(mongooseAggregatePaginate);
+audideoSchema.plugin(mongooseAggregatePaginate);
 
-export const Video = mongoose.model("Video", videoSchema)
+export const Audio = mongoose.model("Audio", audideoSchema)
