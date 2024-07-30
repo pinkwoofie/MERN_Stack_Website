@@ -49,6 +49,7 @@ const Login = () => {
                     navigate('/home');
                 } else {
                     setError(responseData.message || 'An error occurred. Please try again.');
+                    alert("credentials are incorrect");
                     setSuccess('');
                 }
             } else {

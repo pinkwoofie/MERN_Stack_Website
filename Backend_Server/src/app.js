@@ -11,6 +11,12 @@ app.use(cors({
     credentials: true
 }));
 
+
+// app.use(cors({
+//     origin: ["https://deploy-mern-1-whq.vercel.app"],
+//     credentials: true
+// }));
+
 app.use(express.json());
 app.use(express.urlencoded({extended: true, limit :"16mb"}));
 app.use(express.static("public"));
@@ -25,6 +31,7 @@ app.use(cookieParser());
 
 ///// routes import
 import userRouter from "./routes/user.routes.js";
+import { errorHandler } from "./middlewares/errorHandler.middlewares.js";
 
 
 
@@ -42,4 +49,9 @@ app.use("/api/v1/users/audiobooks", userRouter);
 app.use("api/v1", userRouter);
 // for add reviews
 app.use('api/v1', userRouter);
+
+
+// error handler
+
+app.use(errorHandler);
 export {app};
