@@ -64,6 +64,8 @@ const addReview = asyncHandler(async (req, res) => {
     const { audiobookId } = req.params;
     const { rating, comment } = req.body;
 
+    console.log(`${audiobookId},   ${rating},    ${comment}`)
+
     if (!rating || !comment) {
         throw new ApiError(400, "Rating and comment are required");
     }
@@ -104,7 +106,7 @@ const addReview = asyncHandler(async (req, res) => {
 
         const updatedAudiobook = await Audio.findById(audiobookId)
           .populate('owner', 'avatar fullname')
-          .populate('reviews.user', 'revies.user.avatar fullname');
+          .populate('reviews.user', 'avatar fullname');
 
         console.log("Updated Audiobook: ", updatedAudiobook); // Log the updated audiobook
 

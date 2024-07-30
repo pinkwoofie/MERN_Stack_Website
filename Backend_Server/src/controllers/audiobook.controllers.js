@@ -27,6 +27,7 @@ const submitAudiobook = asyncHandler(async (req, res) => {
     
 
     const { title, description, category } = req.body;
+    //console.log(`${title},  ${description},  ${category}`)
 
     if (!title || !description || !category) {
         throw new ApiError(400, "All text fields are required");
@@ -47,9 +48,12 @@ const submitAudiobook = asyncHandler(async (req, res) => {
     }
 
     const categoryDoc = await Category.findOne({ name: category });
+    console.log(`categoryID ${categoryDoc}`);
     if (!categoryDoc) {
         throw new ApiError(404, "Category not found");
     }
+
+    
 
     const newAudiobook = await Audio.create({
         title,
@@ -60,11 +64,14 @@ const submitAudiobook = asyncHandler(async (req, res) => {
         owner: decoded.userId
     });
 
+    console.log(newAudiobook);
+
     if (!newAudiobook) {
+        console.log("hiii");
         throw new ApiError(500, "Something went wrong while creating the audiobook");
     }
 
-    return res.status(201).json(new ApiResponse(200, newAudiobook, "Audiobook Registered Successfully"));
+    return res.status(200).json(new ApiResponse(200, newAudiobook, "Audiobook Registered Successfully"));
 });
 
 export { submitAudiobook };

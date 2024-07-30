@@ -41,7 +41,7 @@ const Register = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/v1/users/register', {
+            const response = await fetch('http://localhost:5430/api/v1/users/register', {
                 method: 'POST',
                 body: formDataToSend,
                 // The browser will automatically set the Content-Type for multipart/form-data

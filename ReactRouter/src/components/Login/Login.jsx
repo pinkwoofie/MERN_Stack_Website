@@ -25,12 +25,13 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/v1/users/login', {
+            const response = await fetch('http://localhost:5430/api/v1/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
+                
             });
 
             
@@ -45,6 +46,7 @@ const Login = () => {
                     // Save token to localStorage or state
                     console.log(responseData);
                     localStorage.setItem('token', responseData.data.token);
+                    localStorage.setItem('refreshToken', responseData.data.refreshToken);
                     console.log(localStorage.getItem('token'));
                     navigate('/home');
                 } else {

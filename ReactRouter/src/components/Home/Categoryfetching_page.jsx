@@ -7,12 +7,13 @@ const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const yourAuthToken = localStorage.getItem('token')
+  const yourAuthToken = localStorage.getItem('token');
+  console.log(`token  ${yourAuthToken}`);
 
   useEffect(() => {
     const fetchAudiobooks = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/v1/audiobooks?category=${id}`);
+        const response = await fetch(`http://localhost:5430/api/v1/audiobooks?category=${id}`);
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
 
@@ -31,7 +32,8 @@ const CategoryPage = () => {
 
   const handleReviewSubmit = async (audiobookId, rating, comment) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/v1/audiobooks/${audiobookId}/reviews`, {
+      console.log(`token  ${yourAuthToken}`);
+      const response = await fetch(`http://localhost:5430/api/v1/audiobooks/${audiobookId}/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -151,3 +153,8 @@ const CategoryPage = () => {
 };
 
 export default CategoryPage;
+
+
+
+
+

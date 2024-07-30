@@ -8,7 +8,7 @@ export default function Gituser()
     const [data, setData] = useState({});
 
     useEffect( () => {
-        fetch(`https://api.github.com/users/${username}`)
+        fetch(`https://api.github.com/users/pinkwoofie`)
         .then( (res) => res.json())
         .then( (res) => setData(res));
 

@@ -8,7 +8,7 @@ export default function Landing() {
         // Fetch categories from the backend
         const fetchCategories = async () => {
             try {
-                const response = await fetch("http://localhost:5000/api/v1/categories"); // Update with your API endpoint
+                const response = await fetch("http://localhost:5430/api/v1/categories"); // Update with your API endpoint
                 const modifiedRes = await response.json();
                 //console.log(data);
                 setCategories(modifiedRes.data); // Adjust based on the structure of your response
